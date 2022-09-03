@@ -13,15 +13,13 @@ pub struct App {
     gl: GlGraphics,
     rotation: f64,
 
-    wx: f64,
-    wy: f64,
-
     x: f64,
     y: f64,
     len: f64,
 }
 
 impl App {
+    /*
     fn render(&mut self, args: &RenderArgs) {
         use graphics::*;
 
@@ -45,11 +43,21 @@ impl App {
                 .trans(-25.0, -25.0);
 
             rectangle(RED, square, transform, gl);
+    });
+    */
+
+    fn render(&mut self, args: &RenderArgs) {
+        
+        let cx = args.window_size[0] / 2.0;
+        let cy = args.window_size[1] / 2.0;
+
+        self.gl.draw(args.viewport(), |c, gl| {
+            // draw
         });
     }
 
     fn update(&mut self, args: &UpdateArgs) {
-        // rotate 2 radians pers econd
+        // rotate 2 radians per second
         self.rotation += 2.0 * args.dt;
 
         if self.rotation > 360.0 {
@@ -77,7 +85,6 @@ fn main() {
     let mut app: App = App {
         gl: GlGraphics::new(opengl),
         rotation: 0.0,
-        wx: 0.0, wy: 0.0,
         x: 0.0, y: 0.0, 
         len: 50.0,
     };
